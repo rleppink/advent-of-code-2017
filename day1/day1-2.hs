@@ -16,11 +16,10 @@ halfwayAroundNext x ys = cycle ys !! (x + 1 + div (length ys) 2)
 
 sumAdjacent :: String -> Int
 sumAdjacent xs =
-  foldl
+  foldr
     (\a b ->
-       if   snd b == halfwayAroundNext (fst b) xs
-       then a + digitToInt (snd b)
-       else a
-    )
+       if   snd a == halfwayAroundNext (fst a) xs
+       then b + digitToInt (snd a)
+       else b)
     0
     (zip [0..] xs)
