@@ -18,8 +18,11 @@ sumFirstLast xs =
   else 0
 
 sumAdjacent :: String -> Int
-sumAdjacent []  = 0
-sumAdjacent [_] = 0
-sumAdjacent (x:xs)
-  | x == head xs = digitToInt x + sumAdjacent xs
-  | otherwise    = sumAdjacent xs
+sumAdjacent xs =
+  foldr
+    (\a b ->
+       if   a == head a
+       then b + digitToInt a
+       else b)
+    0
+    xs
