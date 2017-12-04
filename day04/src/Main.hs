@@ -15,8 +15,7 @@ main = do
   -- Day 4.2
   print
     (foldr
-      (\ a b -> if allUnique (map (sort) a) then b + 1 else b)
+      (\ a b -> if allUnique (map sort a) then b + 1 else b)
       0
       input)
-         
 
