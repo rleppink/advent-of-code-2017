@@ -6,8 +6,7 @@ import qualified Data.Sequence as S
 
 main :: IO ()
 main = do
-  rawInput <- readFile "input"
-  let input = map (\ a -> read a :: Int) (lines rawInput)
+  input <- map read . lines <$> readFile "input"
 
   -- Day 5.1
   print (stepList 0 0 input)
