@@ -10,7 +10,7 @@ main = do
   let input = map (\ a -> read a :: Int) (lines rawInput)
 
   -- Day 5.1
-  -- print (stepList 0 0 input)
+  print (stepList 0 0 input)
 
   -- Day 5.2
   print (stepList' 0 0 (S.fromList input))
