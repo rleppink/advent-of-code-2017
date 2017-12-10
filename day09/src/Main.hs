@@ -6,22 +6,22 @@ main = fmap solve (readFile "src/input") >>= print
 
 
 solve :: String -> Int
-solve x = score 0 0 (snd $ readGroups x "")
+solve x = score 0 0 (readGroups x "")
 
-dropGarbage :: String -> String -> (String, String)
+dropGarbage :: String -> String -> String
 dropGarbage x y =
   case safeHead x of
-    Nothing -> (x, y)
+    Nothing -> y
     Just val ->
       case val of
         '!' -> dropGarbage (drop 2 x) y
         '>' -> readGroups  (tail   x) y
         _   -> dropGarbage (tail   x) y
 
-readGroups :: String -> String -> (String, String)
+readGroups :: String -> String -> String
 readGroups x y =
   case safeHead x of
-    Nothing  -> (x, y)
+    Nothing  -> y
     Just val ->
       case val of
         '!' -> readGroups  (drop 2 x) y
